@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikku Pikku</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            flex: 1;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #FF69B4;
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin-top: 10vh;
+        }
+
+        .sub-text {
+            color: #FF1493; /* Dark pink color for the subtext */
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 80%;
+            margin: 20px auto;
+        }
+
+        .image {
+            max-width: 30%;
+            max-height: 70vh;
+            position: relative;
+        }
+
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FFD700;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: rotateStar 2s linear infinite;
+        }
+
+        .additional-text {
+            color: #FFD700; /* Golden color for additional text */
+            font-size: 28px; /* Increased font size */
+            margin-top: 15px; /* Adjusted margin-top */
+            animation: blink 1s infinite; /* Blinking animation */
+            filter: brightness(150%); /* Increased brightness */
+        }
+
+        .transparent-box {
+            position: absolute;
+            top: 50vh; /* Adjusted top position */
+            right: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+            z-index: 2; /* Above the video */
+            cursor: pointer;
+        }
+
+        .love-me-text {
+            color: #000; /* Black color for the love me text */
+        }
+
+        .response-text {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #FF69B4; /* Light pink color for the response text */
+        }
+
+        .click-box {
+            cursor: pointer;
+            color: #FF1493; /* Dark pink color for the click box */
+        }
+
+        @keyframes rotateStar {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .extended-message {
+            font-size: 36px;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .extended-message p {
+            display: none; /* Hide the extended message by default */
+            color: red; /* Red color for the extended message */
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video Background -->
+    <div class="video-container">
+        <!-- Replace "D:\path\to\your\video.mp4" with the actual file path of your video -->
+        <video class="video" autoplay loop muted>
+            <source src="D:\9561\istockphoto-466713353-640_adpp_is.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Content Container -->
+    <div class="container">
+        <h1>HAPPY VALENTINE'S DAY<br>SYEDA IQRA FATEMA ❤️</h1>
+        <p class="sub-text">YOU ARE THE MOST BEAUTIFUL LADY I'VE EVER SEEN!</p>
+        <div class="images-container">
+            <img class="image" src="D:\9561\p2.jfif" alt="Rose Image"> <!-- Replace with the actual file path or URL of your rose image -->
+            <img class="image" src="D:\9561\p2.jpg" alt="Second Image"> <!-- Replace with the actual file path or URL of your second image -->
+            <img class="image" src="D:\9561\p4.jfif" alt="Third Image"> <!-- Replace with the actual file path or URL of your third image -->
+        </div>
+
+        <!-- Additional Text -->
+        <p class="additional-text">I LOVE YOU ❤️</p>
+        <p class="additional-text">I ALWAYS WILL <span style="font-size: 36px;">∞</span></p>
+    </div>
+
+    <!-- Transparent Box for "If you love me, click I do....." -->
+    <div class="transparent-box" id="loveBox" onclick="toggleExtendedMessage()">
+        <p class="love-me-text">Do You Love Me?</p>
+        <p class="click-box" id="clickBox">I do.....</p>
+        <p class="response-text" id="response"></p>
+    </div>
+
+    <!-- Extended Message -->
+    <div class="extended-message" id="extendedMessage">
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Never in a million years did I think I'd find someone so utterly and completely perfect like you Iqra, someone who would make me happier than I ever dreamed I could be, someone that would touch my life so profoundly and just give me a whole new reason to breathe
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Iqra, I Love You a lot....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I just can't live without you.....
+        </p>
+        <!-- Add similar styling to other paragraphs as needed -->
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I don't want anything more in this world other than you....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I want you for the whole life, just you, forever.....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Yes I know, I can be troublesome when I act possessive, but I can't even handle someone talking you in a friendly manner, it burns my Heart inside.....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Its just that Iqra, I Love You from the deep of my heart that these things become unacceptable to me.....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Iqra, you are My Princess....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            My Baby...
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            My Love...
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            My Queen...
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            My Everything....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I just want years after years of Valentine's Day passing and You and I still together.....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Fid-Duniya Wal Akhirah---فِي الدُّنْيَا وَالآخِرَةِ....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Iqra, your smile is the best thing for me to see...
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I could just stay still for decades just seeing you smile.....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Just keep that smile forever on your face...
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            It suits you....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I'll also make sure to keep it safe on your face....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Once again, Happy Valentine's Day meri Jaan....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            I Love You Infinity❤️......
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">            Just be Happy and be mine....
+        </p>
+        <p style="font-size: 36px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold;">
+            Forever∞.......
+        </p>
+    </div>
+
+    <!-- Rotating star glitter elements -->
+    <script>
+        const container = document.querySelector('.container');
+
+        // Create rotating star glitter elements
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 150 + 'vh';
+            star.style.left = Math.random() * 150 + 'vw';
+            container.appendChild(star);
+        }
+
+        // Function to open a new window with the extended message
+        function openNewWindow() {
+            const extendedMessage = document.querySelector('.extended-message').innerHTML;
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write('<html><head><style>body {background-color: #FFB6C1; color: red;}</style></head><body>' + extendedMessage + '</body></html>');
+        }
+
+        function toggleExtendedMessage() {
+            const extendedMessage = document.getElementById('extendedMessage');
+            extendedMessage.style.display = extendedMessage.style.display === 'none' ? 'block' : 'none';
+            openNewWindow(); // Call the function to open a new window after toggling
+        }
+    </script>
+
+</body>
+
+</html>

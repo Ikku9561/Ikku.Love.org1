@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IKKU PIKKU❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 600px;
+            font-size: 15px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ff4d6d;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .heart-button {
+            background-color: #ff4d6d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .heart-button:hover {
+            background-color: #ff1a43;
+        }
+
+        /* Styles for blinking text */
+        .blinking-text {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d6d;
+            animation: blink 4s infinite;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Script to dynamically create 'Ikku Pikku❤️' in random locations -->
+    <script>
+        function createBlinkingText() {
+            const text = document.createElement('div');
+            text.className = 'blinking-text';
+            text.innerText = 'Ikku Pikku❤️';
+            
+            // Check for overlap
+            let overlap = true;
+            while (overlap) {
+                text.style.top = Math.random() * window.innerHeight + 'px';
+                text.style.left = Math.random() * window.innerWidth + 'px';
+                
+                overlap = false;
+                document.querySelectorAll('.blinking-text').forEach(existingText => {
+                    const rect1 = text.getBoundingClientRect();
+                    const rect2 = existingText.getBoundingClientRect();
+                    
+                    if (
+                        rect1.left < rect2.right &&
+                        rect1.right > rect2.left &&
+                        rect1.top < rect2.bottom &&
+                        rect1.bottom > rect2.top
+                    ) {
+                        overlap = true;
+                    }
+                });
+            }
+
+            document.body.appendChild(text);
+        }
+
+        // Create blinking text in multiple locations
+        for (let i = 0; i < 50; i++) {
+            createBlinkingText();
+        }
+    </script>
+
+    <div class="container">
+        <img src="D:\9561\p5.avif" alt="Romantic Picture">
+        <h2>ARE YOU READY FOR A ROMANTIC SURPRISE, IQRA❤️?</h2>
+        <div class="options">
+            <button onclick="moveAround()" class="heart-button">No</button>
+            <a href="D:\9561\d1.html"><button class="heart-button">Yes</button></a>
+        </div>
+    </div>
+
+    <script>
+        function moveAround() {
+            var noButton = document.querySelector('.heart-button');
+            var newPositionX = Math.random() * (window.innerWidth - noButton.clientWidth);
+            var newPositionY = Math.random() * (window.innerHeight - noButton.clientHeight);
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = newPositionX + 'px';
+            noButton.style.top = newPositionY + 'px';
+        }
+    </script>
+</body>
+
+</html>
